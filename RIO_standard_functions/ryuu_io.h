@@ -6,7 +6,7 @@
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 01:01:39 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/10 02:34:14 by haryu            ###   ########.fr       */
+/*   Updated: 2022/07/10 22:48:56 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # include <unistd.h>
 # include <errno.h>
+# include <stdio.h>
 
 # define RIO_BUFSIZE 		8192
 # define TRUE				1
@@ -40,7 +41,7 @@ typedef struct s_rio_t
 	char	rio_buf[RIO_BUFSIZE];
 }					t_rio_t;
 
-ssize_t	rio_read(t_rio_t *rp, char *usrbuf, size_t n);
+ssize_t		rio_read(t_rio_t *rp, char *usrbuf, size_t n);
 
 /**
  * @brief handling signal and read n bytes application requested.
@@ -98,5 +99,6 @@ ssize_t		rio_writen(int fd, void *usrbuf, size_t n);
  * @return void* 
  */
 void		*ft_malloc_wrapper(size_t byte, char *error_handler);
+void		printf_trio(t_rio_t *ptr);
 
 #endif 

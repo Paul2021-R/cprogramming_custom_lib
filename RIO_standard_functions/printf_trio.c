@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   STDIN_and_STDOUT.c                                 :+:      :+:    :+:   */
+/*   printf_trio.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haryu <haryu@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/10 01:38:59 by haryu             #+#    #+#             */
-/*   Updated: 2022/07/10 23:10:56 by haryu            ###   ########.fr       */
+/*   Created: 2022/07/10 22:33:47 by haryu             #+#    #+#             */
+/*   Updated: 2022/07/10 23:00:20 by haryu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ryuu_io.h"
-#include "../../42_libft/libft.h"
+#include "ryuu_io.h"
 #include <stdio.h>
 
-#define MAXLINE RIO_BUFSIZE
-
-int	main(int argc, char **argv)
+void	printf_trio(t_rio_t *ptr)
 {
-	int		n;
-	t_rio_t	rio;
-	char	buf[MAXLINE];
-
-	rio_readinitb(&rio, STDIN_FILENO);
-	printf_trio(&rio);
-	n = rio_readlineb(&rio, buf, MAXLINE);
-	while (n != 0)
-	{
-		ft_memcpy(buf, rio.rio_buf, n);
-		rio_writen(STDOUT_FILENO, buf, n);
-		n = rio_readlineb(&rio, buf, MAXLINE);
-	}
-	return (0);
+	printf("1 total size : %lu\n", sizeof(*ptr));
+	printf("2 buf : %p(size : %ld)\n", ptr->rio_buf, sizeof( ptr->rio_buf));
+	printf("3 bufptr : %p(size : %ld)\n", ptr->rio_bufptr, sizeof( ptr->rio_bufptr));
+	printf("5 : FD(size : %d)\n", ptr->rio_fd);
 }
